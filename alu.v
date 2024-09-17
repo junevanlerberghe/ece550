@@ -22,6 +22,7 @@ module alu(data_operandA, data_operandB, ctrl_ALUopcode, ctrl_shiftamt, data_res
 	// add A and B (or A and -B)
 	adder add(data_operandA[31:0], new_b[31:0], ctrl_ALUopcode[0], c_out, carry_30, data_result);
 	 
+	// calculate overflow
 	xor(overflow, c_out, carry_30);
 	
 endmodule
