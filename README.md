@@ -1,7 +1,7 @@
 # ECE 550 Project Checkpoint 1: Simple ALU
-June Vanlerberghe
-netid: jlv46
-date: September 17, 2024
+- June Vanlerberghe
+- netid: jlv46
+- date: September 17, 2024
 
 ## Design Implementation
 This simple ALU performs addition and subtraction in Verilog. 
