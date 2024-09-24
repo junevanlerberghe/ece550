@@ -1,6 +1,6 @@
 module bitwise_and(data_A, data_B, and_result);
-	input[32:0] data_A, data_B;
-	output[32:0] and_result;
+	input[31:0] data_A, data_B;
+	output[31:0] and_result;
 	
 	genvar i;
    generate

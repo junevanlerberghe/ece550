@@ -1,6 +1,6 @@
 module bitwise_or(data_A, data_B, or_output);
-	input[32:0] data_A, data_B;
-	output[32:0] or_output;
+	input[31:0] data_A, data_B;
+	output[31:0] or_output;
 	
 	genvar i;
    generate
