@@ -1,10 +1,10 @@
-# ECE 550 Project Checkpoint 1: Simple ALU
+# ECE 550 Project Checkpoints 1 and 2: Full ALU
 - June Vanlerberghe
 - netid: jlv46
-- date: September 17, 2024
+- date: September 25, 2024
 
 ## Design Implementation
-This simple ALU performs addition and subtraction in Verilog. 
+This full ALU performs addition, subtraction, bitwise AND and OR, logical left shift and arithmetic right shift in Verilog. It also tests for isNotEqual and isLessThan for the input data.
 
 ### Addition
 I built the adder module using Carry Select Adders (CSAs). I built a 32-bit and 16-bit CSA. 
@@ -23,3 +23,16 @@ to add data_operandA and -data_operandB.
 I calculate overflow after the addition and/or subtraction happens. Since the adder returns the carry_in of the last bit addition, 
 we can simply calculate the overflow checking if the carry_in of the last bit addition is the same as the carry_out. If these are 
 not equal, we set overflow to 1. If they are equal, overflow will be 0.
+
+### Bitwise AND and OR
+To implement the bitwise AND and OR, I simply did a generate for loop over the data operands and applied an and/or gate on the corresponding bits. Each gate operation was saved in the corresponding bit in the output.
+
+### isNotEqual
+To compare if two data operands are notequal to each other, I used the subtraction results of the two operands. If A-B is not 0 for all bits, then the numbers are not equal to each other. In order to implement this, I used an or gate to or each bit in the subtraction result (so if there are any 1s in the subtraction result, the result of the or gate would be 1). If the result of the or is 1, then isNotEqual is 1.
+
+### isLessThan
+isLessThan is similar to but slightly more complex than evaluating isNotEqual. I also used the subtraction result to compute isLessThan as well as the overflow value from the subtraction result. If the subtraction result is negative with no overflow, we know that data operandA is less than B. When there is an overflow and data operandA is negative, then we also know that A is less than B. I implemented these two cases using and gates to check for the correct case then using an or gate to see if either one of the cases is true, then we know that isLessThan is 1.
+
+### Logical Left Shift
+
+### Arithmetic Right Shift
