@@ -12,6 +12,20 @@ module regfile (
 
    output [31:0] data_readRegA, data_readRegB;
 
-   /* YOUR CODE HERE */
+	// correctly assign enables for writing
+   wire [31:0] oneHotEn, writeEnable, write_result;
+	decoder5to32 dec(ctrl_writeReg, oneHotEn);
+	
+	assign writeEnable = ctrl_writeEnable ? oneHotEn : 32'b0;
+	
+	// send write data through all registers
+	genvar i;
+	generate
+		for (i = 0; i < 32; i = i + 1) begin: write_loop
+			register_32 register(writeEnable[i], data_writeReg, clock, ctrl_reset, write_result);
+		end
+	endgenerate
+	
+	
 
 endmodule
