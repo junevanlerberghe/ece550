@@ -10,6 +10,8 @@ as input.
 
 ### Writing
 Given a write enable, write data and a write register, the regfile will write the data to the correct register. 
+It uses the decoder to transform the 5 bit write enable to a one hot encoding, which we can then pass into 
+each register in the loop. Each output from the registers is stored so that we can later read from them.
 It will only write if the write enable is 1 and if the register is not 0 (register 0 will never get written to).
 
 ### Reading
